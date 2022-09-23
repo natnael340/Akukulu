@@ -1,0 +1,87 @@
+{% block product %}
+<div class="thumbnail" style="background-color: #ECECEC; border: none;">
+				<img src="{{image.url}}">
+			</div>
+			<div style="display: flex; align-items: center; width: 100%; padding-left: 25%; padding-right: 25%" >
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="#FFDF00"/>
+					</svg>
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="#FFDF00"/>
+					</svg>
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<defs>
+    						<linearGradient id="linear-gradient" x1="0.027" y1="0.394" x2="0.986" y2="0.394" gradientUnits="objectBoundingBox">
+      							<stop offset="0" stop-color="#FFDF00"/>
+      							<stop offset="0.472" stop-color="#FFDF00"/>
+      							<stop offset="0.546" stop-color="#fff"/>
+      							<stop offset="1" stop-color="#fff"/>
+    						</linearGradient>
+  						</defs>
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="url(#linear-gradient)"/>
+					</svg>
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="none"/>
+					</svg>
+
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="none"/>
+					</svg>
+					{% with fav|favp:p as fv%}
+					<svg onclick="gau()"  style="margin-left: 1.5em" xmlns="http://www.w3.org/2000/svg" width="30" height="27.525" viewBox="0 0 30 27.525">
+  						<path class="fav" id="ic_favorite_24px" d="M17,30.525l-2.175-1.98C7.1,21.54,2,16.92,2,11.25A8.17,8.17,0,0,1,10.25,3,8.983,8.983,0,0,1,17,6.135,8.983,8.983,0,0,1,23.75,3,8.17,8.17,0,0,1,32,11.25c0,5.67-5.1,10.29-12.825,17.31Z" transform="translate(-2 -3)"
+  						/>
+					</svg>
+					{% endwith %}
+				</div>
+				<div style="width: 100%">
+					<a href="#"style="text-decoration: none;">
+						<h4  class="product">{{p.item_name}}</h4>
+					</a>
+					
+					<h5 style="text-align: center; font-family: bell-MT; color: #676767;"><!--<strike style="margin-right: 1em; color: #EB1818">299.99Br</strike>-->	{{p.Price}}Br</h5>
+				</div>
+{% endblock %}<div class="thumbnail" style="background-color: #ECECEC; border: none;">
+				<img src="{{image.url}}">
+			</div>
+			<div style="display: flex; align-items: center; width: 100%; padding-left: 25%; padding-right: 25%" >
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="#FFDF00"/>
+					</svg>
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="#FFDF00"/>
+					</svg>
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<defs>
+    						<linearGradient id="linear-gradient" x1="0.027" y1="0.394" x2="0.986" y2="0.394" gradientUnits="objectBoundingBox">
+      							<stop offset="0" stop-color="#FFDF00"/>
+      							<stop offset="0.472" stop-color="#FFDF00"/>
+      							<stop offset="0.546" stop-color="#fff"/>
+      							<stop offset="1" stop-color="#fff"/>
+    						</linearGradient>
+  						</defs>
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="url(#linear-gradient)"/>
+					</svg>
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="none"/>
+					</svg>
+
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="none"/>
+					</svg>
+					{% with fav|favp:p as fv%}
+					<svg onclick="gau()"  style="margin-left: 1.5em" xmlns="http://www.w3.org/2000/svg" width="30" height="27.525" viewBox="0 0 30 27.525">
+  						<path class="fav" id="ic_favorite_24px" d="M17,30.525l-2.175-1.98C7.1,21.54,2,16.92,2,11.25A8.17,8.17,0,0,1,10.25,3,8.983,8.983,0,0,1,17,6.135,8.983,8.983,0,0,1,23.75,3,8.17,8.17,0,0,1,32,11.25c0,5.67-5.1,10.29-12.825,17.31Z" transform="translate(-2 -3)"
+  						/>
+					</svg>
+					{% endwith %}
+				</div>
+				<div style="width: 100%">
+					<a href="#"style="text-decoration: none;">
+						<h4  class="product">{{p.item_name}}</h4>
+					</a>
+					
+					<h5 style="text-align: center; font-family: bell-MT; color: #676767;"><!--<strike style="margin-right: 1em; color: #EB1818">299.99Br</strike>-->	{{p.Price}}Br</h5>
+				</div>

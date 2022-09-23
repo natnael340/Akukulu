@@ -1,0 +1,40 @@
+<div id="thecaeousel" class="carousel slide" data-ride="carousel" >
+	<ol class="carousel-indicators">
+		<li data-target="#thecaeousel" data-slide-to="0" class="active"></li>
+		<li data-target="#thecaeousel" data-slide-to="1" ></li>
+		<li data-target="#thecaeousel" data-slide-to="2" ></li>
+	</ol>
+	<div class="carousel-inner">
+		<div class="item active">
+			<div class="slide1" style="background: blur(5px);"><img src="{% static 'image/Rectangle.png' %}" class="img-responsive"></div>
+			<div class="carousel-caption">
+				<h1>Cloths</h1>
+				<h3>Differnt kinds of cloths available on the sock market</h3>
+				<a href="{% url 'home' %}" class="btn btn-primary btn-sm">Get Started</a>
+			</div>
+		</div>
+		<div class="item">
+			<div class="slide2"><img src="{% static 'image/Rectangle.png' %}" class="img-responsive"></div>
+			<div class="carousel-caption">
+				<h1>Cloths</h1>
+				<p>Differnt kinds of cloths available on the sock market</p>
+				
+			</div>
+		</div>
+		<div class="item ">
+			<div class="slide3"><img src="{% static 'image/Rectangle.png' %}" class="img-responsive"></div>
+			<div class="carousel-caption">
+				<h1>Cloths</h1>
+				<p>Differnt kinds of cloths available on the sock market</p>
+				
+			</div>
+		</div>
+	</div>
+	<a class="left carousel-control" href="#thecaeousel" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left"></span>
+	</a>
+	<a class="right carousel-control" href="#thecaeousel" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right"></span>
+	</a>
+
+</div>

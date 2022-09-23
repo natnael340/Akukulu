@@ -1,0 +1,348 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load prod_extra %}
+{% block x %}
+<style type="text/css">
+	.nav-stacked {
+		background-color: rgba(242,199,143,0.18); 
+		line-height: 2em;
+	}
+	.nav-stacked > li {
+		border: 0.5px solid rgba(112,112,112,0.5); 
+		margin: 1em 0 1em 0;
+		font-family: bell-MT;
+		font-size: 1.5em;
+	}
+	.nav-stacked > li > a {
+		color: #373737;
+	}
+	.nav-stacked > li:hover{
+		border: none; 
+		margin: 1em 0 1em 0;
+		background-color: #F2C78F;
+	}
+	.nav-stacked > li:hover > a:hover{
+		color: #fff;
+		background-color: #F2C78F;
+	}
+	.caption > * {
+		text-align: center;
+		font-family: bell-MT;
+		color: #676767;
+	}
+	.activec {
+		border: none; 
+		margin: 1em 0 1em 0;
+		background-color: #F2C78F;
+	}
+	.activec > a {
+		color: #fff;
+		background-color: #F2C78F;
+	}
+	.navig {
+		position: relative;
+	} 
+	.right {
+		position: absolute;
+		top: 1em;
+		right: 0;
+	}
+</style>
+<br>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3 col-sm-4 col-xs-12">
+			<ul class="nav nav-pills nav-stacked nav-catagory">
+				<li role="presentation" class="activec"><a onclick="loadProduct(0)">All</a></li>
+				<li role="presentation"><a onclick="loadProduct(1)">Electronics & Office</a></li>
+				<li role="presentation"><a onclick="loadProduct(2)">Cloth</a></li>
+				<li role="presentation"><a onclick="loadProduct(3)">Jewellery</a></li>
+				<li role="presentation"><a onclick="loadProduct(4)">Games & Programs</a></li>
+				<li role="presentation"><a onclick="loadProduct(5)">Beauty & Health</a></li>
+				<li role="presentation"><a onclick="loadProduct(6)">Automotives & Industrial</a></li>
+				<li role="presentation"><a onclick="loadProduct(7)">Others</a></li>
+			</ul>
+		</div>
+		<div class="col-md-9 col-sm-8 col-xs-12 ">
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="active"><a href="#">All</a></li>
+				<li role="presentation" ><a href="#">Featured</a></li>
+				<li role="presentation">
+					<a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Sort&nbsp;<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a onclick="loadsor(1)">Name</a></li>
+							<li><a onclick="loadsor(2)">Date</a></li>
+							<li><a onclick="loadsor(3)">Price</a></li>
+						</ul>
+					
+				</li>
+			</ul>
+				<br>
+			
+				<div id="products">
+				<div class="col-md-3 col-sm-4 col-xs-6" id="product" style="display: none;">
+					<div class="thumbnail" >
+						<img src="" class="img-responsive item_img" style="background-color: #ECECEC;">
+							<div class="caption">
+							<div style="display: flex; align-items: center; width: 100%; padding-left: 10%; padding-right: 10%; padding-bottom: 0; " class="symbols">
+					<svg  style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="#FFDF00"/>
+					</svg>
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="#FFDF00"/>
+					</svg>
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<defs>
+    						<linearGradient id="linear-gradient" x1="0.027" y1="0.394" x2="0.986" y2="0.394" gradientUnits="objectBoundingBox">
+      							<stop offset="0" stop-color="#FFDF00"/>
+      							<stop offset="0.472" stop-color="#FFDF00"/>
+      							<stop offset="0.546" stop-color="#fff"/>
+      							<stop offset="1" stop-color="#fff"/>
+    						</linearGradient>
+  						</defs>
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="url(#linear-gradient)"/>
+					</svg>
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="none"/>
+					</svg>
+
+					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="none"/>
+					</svg>
+					<svg style="margin-left: 1.5em; margin-right: 1.5em;" xmlns="http://www.w3.org/2000/svg" width="30" height="27.525" viewBox="0 0 30 27.525">
+  						<path  d="M17,30.525l-2.175-1.98C7.1,21.54,2,16.92,2,11.25A8.17,8.17,0,0,1,10.25,3,8.983,8.983,0,0,1,17,6.135,8.983,8.983,0,0,1,23.75,3,8.17,8.17,0,0,1,32,11.25c0,5.67-5.1,10.29-12.825,17.31Z" transform="translate(-2 -3)"
+  						/>
+					</svg>
+				</div>
+							<h4 class="product">Product</h4>
+							<p>New</p>
+							<p style="text-align: center; font-family: bell-MT; color: #676767;">99.99&nbsp;Br</p>
+							<div class="container-fluid" style="margin-left: 0; padding: 0;">
+								<div class="col-md-12 col-sm-12">
+									<a href="#" class="btn btn-default btns" style="font-family: bell-MT; width: 100%; margin-bottom: 0.5em;">Cart</a>
+								</div>
+								<div class="col-md-12 col-sm-12">
+									<a href="#" class="btn btn-default btns" style="font-family: bell-MT; width: 100%;">View</a>
+								</div>
+							</div>
+							
+							
+							
+				</div>
+				
+			</div>
+		</div>
+		</div>
+		</div>
+	</div>
+</div>
+<script  src="{% static 'js/jquery.js' %}"></script>
+<script>
+	var  x;
+	var data = [];
+	var j=0;
+	{% for p in product %}
+	{% with p.images_set.all|first as img %}
+	{% with fav|favp:p as fv %}
+		data[j]={
+			id: {{p.pk}},
+			Name : "{{p.item_name}}",
+			Status : "{{p.item_status}}",
+			Price : "{{p.Price|money}}",
+			Img : "{{img.urls}}".replace(/\.media\./g,'\\media\\'),
+			fav : "{{fv}}",
+			Catagory: "{{p.catagory}}",
+			Dates: "{{p.P_date}}",
+			url : "{% url 'item' id=p.id %}"
+		};
+		j++;
+	{% endwith %}
+	{% endwith %}
+	{% endfor %}
+	var product = document.querySelector("#product");
+	product.style.display = "block";
+	var container = document.querySelector("#products");
+	var loadedto;
+	loadProduct(0);
+	function loadProduct(type){
+		navb = $(".nav-catagory li");
+		for(var n=0; n<navb.length; n++){
+			navb[n].classList.remove("activec");
+		}
+		navb[type].classList.add("activec");
+
+		container.innerHTML = "";
+		var da = []
+		loadedto = type;
+		switch(type){
+			case 1:
+				da = filter("Electronics &amp; Office");
+				break;
+			case 2:
+				da = filter("Cloth");
+				break;
+			case 3:
+				da = filter("Jewellery");
+				break;
+			case 4:
+				da = filter("Games &amp; Programs");
+				break;
+			case 5:
+				da = filter("Beauty &amp; Health");
+				break;
+			case 6:
+				da = filter("Automotives &amp; Industrial");
+				break;
+			case 7:
+				da = filter("Others");
+				break;
+			default:
+				da = data
+		}
+		for (id in da) {
+			product.children[0].children[0].src = da[id]["Img"];
+			product.children[0].children[1].children[1].textContent = da[id]["Name"];
+			product.children[0].children[1].children[2].textContent = da[id]["Status"];
+			product.children[0].children[1].children[3].textContent = da[id]["Price"]+" Br";
+			product.children[0].children[1].children[4].children[1].children[0].href = da[id]["url"];
+			var svg = product.children[0].children[1].children[0].children[5];
+			svg.setAttribute("onclick", "subfun("+id+")");
+			svg.id = "fav-anim-"+id;
+			svg.children[0].id = "fav-"+id;
+			if (da[id]["fav"]) 
+			{
+				svg.children[0].classList.add("fav");
+				svg.children[0].classList.remove("fav-invert");
+			}
+			else {
+				svg.children[0].classList.remove("fav");
+				svg.children[0].classList.add("fav-invert");
+			}
+				
+			container.innerHTML+= new XMLSerializer().serializeToString(product);
+		}
+			
+	}
+	function filter(val){
+		var da = []
+		for(id in data){
+			console.log(data[id].Catagory)
+			if(data[id].Catagory == val){
+				da[id] = data[id]
+			}
+		}
+		return da
+	}
+	var da = false;
+	function subfun(id){
+		console.log(id);
+	}
+	function subm(id){
+		if(!da) {
+			$.ajax({
+			url: '{% url "home" %}',
+			data: {
+				'id': id,
+			},
+			dataType: 'json',
+			success: function (data){
+				if (data.deleted){
+					var x = document.getElementById("btnc"+id);
+					x.classList.add("btn-default");
+					x.classList.remove("btn-primary");
+					x.innerHTML = "Added"
+				}
+			},
+		})
+		}
+		
+	}
+	function sort(start, mid, end, type){
+		var i, j, k;
+		var s1 = mid-start+1, s2=end-mid;
+		var L=[], R=[];
+		for(i=0; i<s1; i++){
+			L[i] = data[start+i]
+		}
+		for(j=0; j<s2; j++){
+			R[j] = data[mid+1+j];
+		}
+		i=0, j=0, k=start;
+		
+		while(i<s1 && j<s2){
+			switch(type){
+				case 1:
+					if(L[i].Name.localeCompare(R[j].Name)<1){
+						data[k]=L[i];
+						i++;
+					}
+					else{
+						data[k]=R[j]
+						j++
+					}
+					break;
+				case 2:
+					if(AmPm24(L[i])<=AmPm24(R[j])){
+						data[k]=L[i];
+						i++;
+					}
+					else{
+						data[k]=R[j]
+						j++
+					}
+					break;
+				case 3:
+					if(parseFloat(L[i].Price.replace(",",""))<parseFloat(R[j].Price.replace(",",""))){
+						data[k]=L[i];
+						i++;
+					}
+					else{
+						data[k]=R[j]
+						j++
+					}
+					break
+
+			}
+			k++;
+		}
+		while(i<s1){
+			data[k] = L[i];
+			i++;
+			k++;
+		}
+		while(j<s2){
+			data[k] = R[j];
+			j++;
+			k++;
+		}
+	}
+	function loadsor(type){
+		sorted(0, data.length-1, type)
+	}
+	function sorted(start, end, type){
+		if(start<end){
+			var mid=parseInt((start+end)/2);
+			sorted(start, mid, type);
+			sorted(mid+1, end, type);
+			sort(start, mid, end, type);
+			
+	}
+	loadProduct(loadedto);
+	}
+	function AmPm24(da){
+		var dac = da.Dates.substring(0,da.Dates.length-4).split(",");
+		var hour = parseInt(dac[2].split(":")[0]);
+		var ampm = da.Dates.substring(da.Dates.length-4,da.Dates.length)
+		if (ampm.trim() == "p.m." && hour<12) hour+=12;
+		if (ampm.trim() == "a.m." && hour==12) hour-=12;
+		dac[2] = " " + hour.toString() + ":" +  dac[2].split(":")[1];
+		dac = "".concat(dac)
+		var ti = new Date(dac).getTime()
+		return ti;
+	}
+</script>
+<br>
+{% endblock %}

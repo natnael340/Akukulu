@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load prod_extra %}
+{% block x %}
+<style type="text/css">
+	.image-slide-container{
+		position: relative;
+		z-index: 0;
+		background-color: #ECECEC;
+		border: none; 
+
+	}
+	.image-slide{
+		display: none;
+	}
+	.fade {
+		-webkit-animation-name: fade;
+		-webkit-animation-duration: 1.5s;
+		animation-name: fade;
+		animation-duration: 1.5s;
+		animation-fill-mode: forwards; 
+	}
+	@-webkit-keyframes fade {
+		from { opacity: .4 }
+		to{ opacity: 1 }
+	}
+	@keyframes fade {
+		from { opacity: .4 }
+		to{ opacity: 1 }
+		}
+	}	
+	.prev{
+		color: #686868; 
+		font-size: 50px; 
+		text-align: center; 
+		width: 100%;
+		}
+	.glyphicon-chevron-right, .glyphicon-chevron-left{
+		transform: rotate(-90deg);
+		font-size: 1.5em; 
+		width: 100%;
+		text-align: center;
+		margin-left: .8em;
+		cursor: pointer;
+
+	}
+	
+	.glyphicon-chevron-right:hover,  .glyphicon-chevron-left:hover{
+		color: rgba(0,0,0,0.5);
+	}
+</style>
+<br>
+<br>
+
+<div class="container-fluid" style="margin-top: 5%;">
+	<div class="col-md-5">
+		
+		<div class="thumbnail image-slide-container">
+			{%  for im in image %}
+			<img id="{{im.id}}" class="image-slide fade" src="{{im.url}}" style="width: 200%;">
+			{% endfor %}
+			<div style="left: 70%; right: 5%; top: 5%; position: absolute;">
+				<span  class="glyphicon glyphicon-chevron-right prev"  onclick="showslide(-1)" ></span>
+				<ul style="list-style-type: none; overflow-y: hidden; height: 23em; margin-bottom: 0;">
+					
+					<div class="slider" style="transition-duration: 2s;">
+					{% for im in image %}
+					<li><span class="thumbnail " style="background-color: #B7B7B7;  padding: 15%; border: none; box-shadow: 0em 0.5em 0.8em rgba(0,0,0,0.5	); cursor: pointer;" onclick="changeimg({{im.id}})"><img src="{{im.url}}" width="100%"></span></li>
+					{% endfor %}
+					</div>
+				</ul>
+				<span  class="glyphicon glyphicon-chevron-left"  onclick="showslide(1)"></span>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-5 col-sm-11 col-xs-11"><h1 style="margin-top: 0; padding-top: 0; color: #373737;">{{product.item_name}}</h1>
+		<div style="display: flex; align-items: center;" >
+					<svg  style="margin: 0.25em; width: 1em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path  id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="#FFDF00"/>
+					</svg>
+					<svg style="margin: 0.25em; width: 1em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="#FFDF00"/>
+					</svg>
+					<svg style="margin: 0.25em; width: 1em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<defs>
+    						<linearGradient id="linear-gradient" x1="0.027" y1="0.394" x2="0.986" y2="0.394" gradientUnits="objectBoundingBox">
+      							<stop offset="0" stop-color="#FFDF00"/>
+      							<stop offset="0.472" stop-color="#FFDF00"/>
+      							<stop offset="0.546" stop-color="#fff"/>
+      							<stop offset="1" stop-color="#fff"/>
+    						</linearGradient>
+  						</defs>
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="url(#linear-gradient)"/>
+					</svg>
+					<svg style="margin: 0.25em; width: 1em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="none"/>
+					</svg>
+
+					<svg style="margin: 0.25em; width: 1em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
+  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="none"/>
+					</svg>
+					<h5 style="margin-top: 0.75em; margin-left: 0.5em;">4.6 out of (20) <a href="#">Review</a></h5>
+				</div>
+				<div style="display: flex;">
+					<h1>{{product.Price|birr:0}}</h1>
+					<h3>.{{product.Price|birr:1}}</h3>&nbsp&nbsp
+					<h1>Br</h1>
+					<h5 style="color: #676767">{{product.Tax|tax}}</h5>
+				</div>	
+				<h3>Description</h3>
+				<hr style="margin-top: 0;">
+				<p>{{product.Description}}</p>
+				<span class=" btn btn-default btns" style="box-shadow: 0em 0.5em 1em #888888; width: 100%; font-family: bell-MT; font-size: 2em;">Cart</span>
+				
+
+	</div>
+	<div class="col-md-1 col-sm-1 col-xs-1">
+			</div>
+	<div class="col-md-12" style="margin-bottom: 1em;">
+		<h2 style="font-family: bell-MT; color: #676767;">Review</h2>
+		<hr style="margin-top: 0;">
+		<div class="container jumbotron" style="margin-bottom: 0; background-color: #F3F1E8;">
+			<div class="col-offset-1 col-md-11" style="display: inline-flex;">
+				<span class="glyphicon glyphicon-user" style="padding: 0.5em; background-color: #979797; border-radius: 1.5em; color: #464646; font-size: 1.5em;"></span>
+				&nbsp
+				<h4 style="margin-top: 0.8em; margin-bottom: 0; font-family: bell-MT">Anonymus</h4>
+			</div>
+			<div class=" col-md-12" style="margin-left: 1em; margin-top: 1em;">
+				<p style="font-family: bell-MT">This product is really good, I loved the way they present it by the description they made. also the images are so good.</p>
+
+			</div>
+			<div class="col-md-12"><hr style="border-color: #C5C5C5; box-shadow: 0em 0.1em 1em #000"></div>
+			<div class="col-offset-1 col-md-11" style="display: inline-flex;">
+				<span class="glyphicon glyphicon-user" style="padding: 0.5em; background-color: #979797; border-radius: 1.5em; color: #464646; font-size: 1.5em;"></span>
+				&nbsp
+				<h4 style="margin-top: 0.8em; margin-bottom: 0; font-family: bell-MT">Anonymus</h4>
+			</div>
+			<div class=" col-md-12" style="margin-left: 1em; margin-top: 1em;">
+				<p style="font-family: bell-MT">This product is really good, I loved the way they present it by the description they made. also the images are so good.</p>
+
+			</div>
+			<div class="col-md-12"><hr style="border-color: #C5C5C5; box-shadow: 0em 0.1em 1em #000"></div>
+			
+		</div>
+		
+		<div class="container" style="padding-left: 0; padding-right: 0;">
+			<div class="input-group input-group-lg" style="width: 100%; height: 50%;" >
+				<input type="text" name="Comment" class="form-control" placeholder="Type Your Comment Here ..." aria-describedby="cmnt" style="font-family: bell-MT; border: 1px solid #FFE58F;">
+				<span class="input-group-addon glyphicon glyphicon-send" id="cmnt" style="background-color: #FFDB65;  "></span>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var i;
+	var len = document.getElementsByClassName("image-slide");
+	var currentImg = -1;
+	console.log(len.length);
+	changeimg(currentImg);
+	function changeimg(value) {
+		for (i = 0; i < len.length; i++) {
+			len[i].style.display = "none";
+		}
+		if(value==-1){
+			len[0].style.display = "block";
+			currentImg = 0;
+		}
+		else {
+			var slide = document.getElementById(value);
+			slide.style.display = "block"; 
+		}
+	}
+	function showslide(value) {
+		var slide = document.getElementsByClassName('slider');
+		if(value>0 ){
+			slide[0].style.transform = "translateY(-110px)";
+
+		}
+		else {
+			slide[0].style.transform = "translateY(0px)";
+		}
+	}
+</script>
+{% endblock %}

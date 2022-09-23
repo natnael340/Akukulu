@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block x %}
+	<br>
+	{% if  not user.is_authenticated %}
+	<p>hello</p>
+		
+	{%else%}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-xs-0">
+				<br>
+			</div>
+			<div class="col-md-6 col-xs-12">
+				<div class="panel panel-default" style="border-color: #ffdb65;">
+					<div class="panel-heading" style="text-align: center; background-color: #e2e2e2;font-weight: 0.5;">
+						<h5 class="panel-title">Add Product</h5>
+					</div>
+			<div class="panel-body">
+				<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{form.non_field_errors}}
+		
+		
+		{% for errors in form.image.errors %}
+			<div class="alert alert-warning">
+				<b>Warning!</b> {{errors}}
+			</div>
+		{% endfor %}
+
+		<div class="img">
+			<label for="{{form.image.id_for_label}}" style="font-weight: 10px; padding-left: 5px; flex: 1;" >Profile Image</label>{{form.image}}
+		</div> 
+
+		<br>
+		<br>
+		{% for errors in form.item_name.errors %}
+			<div class="alert alert-warning">
+				<b>Warning!</b> {{errors}}
+			</div>
+		{% endfor %}
+			
+
+			
+		<div class="input-group">
+			
+			<label for="{{form.item_name.id_for_label}}" class="input-group-addon addons"  id="basic-addon1">Item Title</label>
+			{{form.item_name}}
+			
+		</div>
+		<br>
+		{% for errors in form.item_status.errors %}
+			<div class="alert alert-warning">
+				<b>Warning!</b> {{errors}}
+			</div>
+		{% endfor %}
+		<div class="input-group">
+			<label for="{{form.item_status.id_for_label}}" class="input-group-addon addons" id="basic-addon1">Item Status</label>
+			{{form.item_status}}
+			<div class="input-group-btn">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expander="false"><span class="caret">
+				</span></button>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="#" id="new">New</a></li>
+					<li><a href="#" id="used">Used</a></li>
+					<li><a href="#" id="sused">Slightly Used</a></li>
+				</ul>
+			</div>
+			
+		</div>
+		<br>
+		{% for errors in form.Tax.errors %}
+			<div class="alert alert-warning">
+				<b>Warning!</b> {{errors}}
+			</div>
+		{% endfor %}
+		<div class="input-group">
+			<label for="{{form.Tax.id_for_label}}"  class="input-group-addon addons" id="basic-addon1">Tax</label>
+			{{form.Tax}}
+			<div class="input-group-btn">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expander="false"><span class="caret">
+				</span></button>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="#" id="in">Included</a></li>
+					<li><a href="#" id="un">Unincluded</a></li>
+				</ul>
+			</div>
+			
+		</div>
+		<br>
+		{% for errors in form.Description.errors %}
+			<div class="alert alert-warning">
+				<b>Warning!</b> {{errors}}
+			</div>
+		{% endfor %}
+		<div class="input-group">
+			<label for="{{form.Description.id_for_label}}"  class="input-group-addon addons" id="basic-addon1">Description</label>
+			{{form.Description}}
+			
+		</div>
+		<br>
+		{% for errors in form.Price.errors %}
+			<div class="alert alert-warning">
+				<b>Warning!</b> {{errors}}
+			</div>
+		{% endfor %}
+		<div class="input-group">
+			<label for="{{form.Price.id_for_label}}"  class="input-group-addon addons" id="basic-addon1">Price</label>
+			{{form.Price}}
+			
+		</div>
+		<br>
+		{% for errors in form.no_of_item.errors %}
+			<div class="alert alert-warning">
+				<b>Warning!</b> {{errors}}
+			</div>
+		{% endfor %}
+		<div class="input-group">
+			<label for="{{form.no_of_item.id_for_label}}"  class="input-group-addon addons" id="basic-addon1">Number of Item</label>
+			{{form.no_of_item}}
+			
+		</div>
+		<br>
+
+		
+		<span class="btn btn-default addons"  id="mimg">Attch More Image</span>
+		<div class="moimg" id="his">
+			<br>
+			{% for errors in form.image1.errors %}
+				<div class="alert alert-warning">
+					<b>Warning!</b> {{errors}}
+				</div>
+			{% endfor %}
+			{{form.image1}}
+			<br>
+			{% for errors in form.image2.errors %}
+				<div class="alert alert-warning">
+					<b>Warning!</b> {{errors}}
+				</div>
+			{% endfor %}
+			{{form.image2}}
+			<br>
+			{% for errors in form.image3.errors %}
+				<div class="alert alert-warning">
+					<b>Warning!</b> {{errors}}
+				</div>
+			{% endfor %}
+			{{form.image3}}
+			<br>
+			{% for errors in form.image4.errors %}
+				<div class="alert alert-warning">
+					<b>Warning!</b> {{errors}}
+				</div>
+			{% endfor %}
+			{{form.image4}}
+			<br>
+			{% for errors in form.image5.errors %}
+				<div class="alert alert-warning">
+					<b>Warning!</b> {{errors}}
+				</div>
+			{% endfor %}
+			{{form.image5}}
+		</div>
+		<input type="submit" value="save" class="btn btn-default subbtn" id='submt' >
+		</form>
+			</div>
+		</div>
+			</div>
+		</div>
+		
+		
+	</div>
+	<script type="text/javascript">
+		var btn = document.getElementById("submt");
+		var n = document.getElementById("new");
+		var u = document.getElementById("used");
+		var su =document.getElementById("sused");
+		var included = document.getElementById("in");
+		var unincluded = document.getElementById("un");
+		var atmimg = document.getElementById("mimg");
+		document.getElementById("statusform").value="";
+		document.getElementById("tax_form").value=0;
+		document.getElementById("name").value="";
+		document.getElementById("desc").value="";
+		document.getElementById("price").value="";
+		
+
+		n.onclick = function(){
+			document.getElementById("statusform").value="New";
+		}
+		u.onclick = function(){
+			document.getElementById("statusform").value="Used";
+		}
+		su.onclick = function(){
+			document.getElementById("statusform").value="Slightly Used";
+		}
+		included.onclick = function(){
+			document.getElementById("tax_form").readOnly=false;
+		}
+		unincluded.onclick = function(){
+			document.getElementById("tax_form").value=0;
+			document.getElementById("tax_form").readOnly=true;
+		}
+		atmimg.onclick = function(){
+			var curent = document.getElementById("his");
+			if (curent.className == "moimg")
+			{
+				curent.className = curent.className.replace("moimg", "");
+			}
+			else{
+				curent.className += "moimg";
+			}
+		}
+
+	</script>
+	{% endif %}
+	
+{% endblock %}

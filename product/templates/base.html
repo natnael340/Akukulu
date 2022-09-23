@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	{% load staticfiles %}
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/my.css' %}"/>
+		<script  src="{% static 'js/jquery.min.js' %}"></script>
+		<script  src="{% static 'js/jquery-3.2.1.js' %}"></script>
+		<script  src="{% static 'js/bootstrap.min.js' %}"></script>
+		
+	
+</head>
+<body style="overflow-x: hidden;">
+	<div class="navbar navbar-inverse" style="margin-bottom: 0px; border-color: #303030; border-radius: 0px;">
+		<div class="container">
+			<div class="navbar-header" >
+					<div style="margin-top: 1em; display: inline-block; color: #ECECEC; font-family: Segoe UI; font-weight: 600;"><img src="{% static 'image/call.png' %}" width="10%"> (+251)926600549</div>
+			
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#exa1" aria-expanded="false">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+			</button>
+			</div>
+			<div class="collapse navbar-collapse" id="exa1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{% url 'account' %}"  style="margin-bottom: 0px; padding-bottom: 0px; font-family: Segoe UI; font-weight: 600; color: #ECECEC;">Account</a></li>
+					<li><a href="{% url 'cart' %}"  style="margin-bottom: 0px; padding-bottom: 0px; font-family: Segoe UI; font-weight: 600; color: #ECECEC; position: relative;">Cart<span style="position: absolute; font-size: 0.7em; top: 0.5em; left: 4em; background-color: #F8A741; padding-left: 0.4em; border-radius: 5em; border: 0.1em solid #000; width: 2.1em;">02</span></a></li>
+					<li><a href="#"  style="margin-bottom: 0px; padding-bottom: 0px; font-family: Segoe UI; font-weight: 600; color: #ECECEC;">Shopping</a></li>
+					<li><a href="#"  style="margin-bottom: 0px; padding-bottom: 0px; font-family: Segoe UI; font-weight: 600; color: #ECECEC;">Checkout</a></li>
+				</ul>
+			</div>
+				</div>
+			
+		</div>
+		
+	</div>
+	<div class="navbar navbar-default sticky" style="margin-bottom: 0px; background-color: #FFFFFF; border-radius: 0px; border-color: #F2C78F;box-shadow: 0em 0.5em 1em #E99A35;  z-index: 999;">
+		<div class="container">
+			<div class="navbar-header">
+				<div class="navbar-brand" style="margin-bottom:0.3em;margin-top: 0.3em; padding: 0;">
+					<img src="{% static 'image/hen.png' %}" width="10%" class="img-responsive">
+				</div>
+			
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#exa" aria-expanded="false">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				</div>
+			<div class="collapse navbar-collapse" id="exa">
+				
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{% url 'index' %}"><span class="mainicos">Home</span></a></li>
+					<li><a href="{% url 'home' %}"><span class="mainicos">Catagory</span></a></li>
+					
+				</ul>
+				<div class="navbar-form navbar-left" style="padding-left: 0;">
+					<div class="form-group" style="margin-top: 0.3em; position: relative;" >
+						<input type="text" placeholder="Search" class="form-control" style="background-color: #FFFFFF;" id="search">
+						{% csrf_token %}
+						<div class="search-result">
+							<span class="my-loading-dots">
+								<div class="loading_dots">
+									<i></i>
+									<i></i>
+									<i></i>
+								</div>
+							</span>
+							<ul class="search-list">
+							
+							</ul>
+						</div>
+					</div>
+				</div>	
+				
+			</div>
+				
+				
+			</div>
+	</div>
+	{% block x %}
+	{% endblock %}
+	<script  src="{% static 'js/index.js' %}"></script>
+	<script type="text/javascript">
+		var k = "{{request.path}}";
+		if(k=="/home/"){
+			$(window).scroll(function(){
+			var st = $(".sticky"),
+			scroll = $(window).scrollTop();
+			if (scroll >=150) st.addClass('fixed');
+			else st.removeClass('fixed');
+		});
+		}
+		else {
+			$(window).scroll(function(){
+			var st = $(".sticky"),
+			scroll = $(window).scrollTop();
+			if (scroll >=50) st.addClass('fixed');
+			else st.removeClass('fixed');
+		});		}
+		
+	</script>
+	
+	<div class="container-fluid" style="padding: 0px;">
+	<div class="jumbotron" style="margin: 0em; border-radius: 0em; position: relative;z-index: 0;">
+		<div class="container">
+			<div class="col-md-4">
+				<h1 style="margin-left: -0.6em; font-family: bell-MT; color: #484848;">AKUKULU</h1>
+				<br>
+				<p style="font-family: bell-MT; color: #9A9A9A;">Lorem ipsum dolor sit amet,<br>
+				consectetur adipisicing elit sed do<br>
+				eiusmod tempor incididunt ut labore</p>
+			</div>
+			<div class="col-md-offset-2 col-md-6">
+				<div class="container">
+					<div class="col-md-4">
+						<h3 style="font-family: bell-MT; color: #484848;">Quick Links</h3>
+						<hr style="border-color: #707070; margin-top: 1%; margin-left: -21%;">
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>About</h5></a>
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>Get Coupon</h5></a>
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>Offers & Disccount</h5></a>
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>Contact Us</h5></a>
+					</div>
+					<div class="col-md-4">
+						<h3 style="font-family: bell-M; color: #484848;" >New Product</h3>
+						<hr style="border-color: #707070; margin-top: 1%; margin-left: -21%;">
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>Men's Cloth</h5></a>
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>Watches</h5></a>
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>Electronics</h5></a>
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>Shoes</h5></a>
+					</div>
+					<div class="col-md-4">
+						<h3 style="font-family: bell-MT; color: #484848;">Support</h3>
+						<hr style="border-color: #707070; margin-top: 1%; margin-left: -21%;">
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>Frequently Asked Questions</h5></a>
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>Terms and Condition</h5></a>
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>Policy</h5></a>
+						<a href="#" style="font-family: bell-MT; color: #9A9A9A; text-decoration: none;	"><h5>Report Payment Issues</h5></a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+</div>
+</div>
+</body>
+</html>

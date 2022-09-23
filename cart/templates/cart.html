@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load prod_extra %}
+{% block x %}
+<style type="text/css">
+	* {
+		font-family: bell-MT;
+		color: #717171;
+		z-index: 0;
+	}
+	
+	.glyphicon-plus, .glyphicon-minus {
+		background-color: #fff; 
+		border-color: #D6D6D6;  
+		border-style: solid; 
+		font-size: 0.8em; 
+		padding: 0.5em; 
+		cursor: pointer;
+	}
+	.glyphicon-minus {
+		border-width: 0.5px 0px 0.5px 0.5px;
+	}
+	.glyphicon-plus {
+		border-width: 0.5px 0.5px 0.5px 0px;
+	}
+</style>
+<div class="container">
+	<br>
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Total</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for prod in products%}
+					{% with prod.product as p%}
+					{% with p.images_set.all|first as img %}
+					<tr class="cart-row" id="row{{p.id}}">
+						<td>
+							<div class="cart-name-img">
+								<img src="{{img.url}}" class="img-responsive" > &nbsp;&nbsp;
+								<a href="#" class="product" >{{p.item_name}}</a>
+							</div></td>
+						
+						<td style="padding-top: 2em;"><span>{{p.Price}}Br</span></td>
+						<td style="padding: 1.5em 4em 1.5em 0em;">
+							<div class="input-group input-group-sm" style="width: 40%">
+								<span class="input-group-addon glyphicon glyphicon-minus" onclick="changeval({{p.id}},-1, {{p.Price}})"></span>
+								<input id="nos{{p.id}}" type="text" class="form-control" style="background-color: #fff; border-color: #D6D6D6; border-width: 0.5px 0px 0.5px 0px; border-style: solid; text-align: center; margin-top: 0.1em; margin-bottom: -.5em;" value="1">
+								<span class="input-group-addon glyphicon glyphicon-plus" onclick="changeval({{p.id}},1,{{p.Price}})"></span>
+							</div>
+						</td>
+						<td style="padding-top: 2em;"><span id="total{{p.id}}" class="price">{{p.Price}}Br</span></td>
+						<td style="padding-top: 1.3em;"><span class="glyphicon glyphicon-remove" style="background-color: #F2C78F; padding: 0.5em; border-radius: 1em; color: #fff; cursor: pointer;"></span></td>
+					</tr>
+				</tbody>
+				{% endwith %}
+				{% endwith %}
+				{% endfor %}
+			</table>
+	
+</div>
+</div>
+<br>
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="jumbotron" style="padding-top: 1em;">
+			<h3>Select Shipping Address</h3>
+			<div class="input-group">
+				<input type="text" class="form-control" style="border: 0.5px solid #8F8F8F;">
+				<div class="input-group-btn">
+					<button type="button"  class="btn btn-default dropdown-toggle btns" style="border: 0.5px solid #8F8F8F; border-width: .5px .5px .5px 0px;" 
+					data-toggle="dropdown"  aria-haspopup = "true" aria-expanded = "false"><span class="caret"></span></button>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li><a href="#">Addis Abeba</a></li>
+						<li><a href="#">Hawassa</a></li>
+						<li><a href="#">Bahirdar</a></li>
+						<li><a href="#">Dire Dewa</a></li>
+						<li><a href="#">Mekele</a></li>
+						<li><a href="#">Jimma</a></li>
+						<li><a href="#">Assosa</a></li>
+						<li><a href="#">Harrar</a></li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<h2>Shipping Methods</h2>
+			<div class="container-fluid">
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<div class="radio">
+						<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Normal Delivery
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked>Next Day Delivery
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked>Personal Pickup
+						</label>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6" style="text-align: right; font-weight: bold;">
+					<h5 style="font-weight: bold;">10 Br/Km</h5>
+					<h5 style="font-weight: bold;">50 Br/Km</h5>
+					<h5 style="font-weight: bold;">Free</h5>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="jumbotron" style="padding-top: 1em;">
+			<h2>Cart Total</h2>
+			<br>
+			<br>
+			<br>
+			<div class="container-fluid">
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<h4>Subtotal</h4>
+					<h4>Shipping</h4>
+					<h4 style="background-color: rgba(255,255,255,0.71); margin-right: -0.85em;">Total</h4>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
+					<h4 id="subtotal">650Br</h4>
+					<h4>50Br</h4>
+					<h4 style="background-color: rgba(255,255,255,0.71); margin-left: -0.85em;">700Br</h4>
+				</div>
+			</div>
+			<br>
+			<br>
+		</div>
+	</div>
+</div>
+
+</div>
+<script  src="{% static 'js/jquery.js' %}"></script>
+<script>
+	var STotal = document.getElementById("subtotal");
+	var prices = document.getElementsByClassName('price');
+	var m = 0.0;
+	for (var i = 0; i < prices.length; i++) {
+		var s = prices[i].innerHTML;
+		s = s.substring(0, s.length-2);
+		m += parseFloat(s);
+	}
+	STotal.innerHTML = m + "Br";
+	function changeval(val, i, price) {
+		var nos = document.getElementById("nos"+val);
+		var Tot = document.getElementById("total"+val);
+		var prev = parseFloat(Tot.innerHTML.substring(0, Tot.innerHTML.length-2));
+		var n = parseInt(nos.value);
+		if (!(n==1 && i==-1)){
+			n+=parseInt(i);
+			nos.value = n;
+		}
+		var k = parseFloat(price)*n;
+		prev = k-prev;
+		Tot.innerHTML = k + "Br"; 
+		m+=prev;
+		STotal.innerHTML = m + "Br";
+	}
+	function deleteitem(id){
+		$.ajax({
+			url: '{% url "cart" %}',
+			data: {
+				'id': id,
+			},
+			dataType: 'json',
+			success: function (data){
+				if (data.deleted){
+					$('#prod-' + id).remove();
+					$('')
+				}
+			},
+		})
+	}
+</script>
+{% endblock %}
