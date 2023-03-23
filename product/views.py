@@ -9,6 +9,7 @@ from profs.models import favourite
 
 
 
+
 def addproduct(request):
 	
 	myform = ProductForm()
@@ -37,6 +38,8 @@ def addproduct(request):
 	}
 	return render(request, 'productform.html', context)
 
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 def index(request):
 	
@@ -47,7 +50,7 @@ def index(request):
 		print(str(request.META['REMOTE_ADDR']))
 		fav = favourite.objects.filter(ip=str(request.META['REMOTE_ADDR']))
 		context = {'product': Products.objects.all(), 'image': Images.objects.all(), 'fav': fav}
-	if request.is_ajax():
+	if is_ajax(request):
 		p = Products.objects.get(id=request.GET['id'])
 		if not request.GET['cart']:
 			data = set_fav(request, fav, p)
@@ -65,7 +68,7 @@ def home(request):
 		fav = favourite.objects.filter(ip=str(request.META['REMOTE_ADDR']))
 		context = {'product': Products.objects.all(), 'fav': fav}
 	dat = {}
-	if request.is_ajax():
+	if is_ajax(request):
 		if request.GET['type']:
 			if request.GET['type']==1:
 				prod =  Products.objects.all().order_by("item_name")

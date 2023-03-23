@@ -1,187 +1,338 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-{% load prod_extra %}
-{% block x %}
-<style type="text/css">
-
-	
-	
-</style>
-<div style="position: relative; z-index: -1; width: 100%;">
-	<img src="{% static 'image/main.jpg' %}" class="img-responsive" width="100%">
-	<div style="position: absolute; top: 20em; left: 5em; width: 100%;">
-		<div class="section">
-			<div class="abcd"></div>
-			<div class="main-text">
-				<h1 style="color: #E99A35">Summer Product</h1>
-				<h5 style="color: #B27C37"> With an affordable price</h5>
-				<h5 style="color: #B27C37"><strike>169.99Br</strike>		99.99Br</h5>
-			</div>
-		</div>
-	</div>
-	
-	
+{% extends 'base.html' %} {% load static %} {% load prod_extra %} {% block x %}
+<style type="text/css"></style>
+<div style="position: relative; z-index: -1; width: 100%">
+  <img
+    src="{% static 'image/main.jpg' %}"
+    class="img-responsive"
+    width="100%"
+  />
+  <div style="position: absolute; top: 20em; left: 5em; width: 100%">
+    <div class="section">
+      <div class="abcd"></div>
+      <div class="main-text">
+        <h1 style="color: #e99a35">Summer Product</h1>
+        <h5 style="color: #b27c37">With an affordable price</h5>
+        <h5 style="color: #b27c37"><strike>169.99Br</strike> 99.99Br</h5>
+      </div>
+    </div>
+  </div>
 </div>
-<br>
-<br>
+<br />
+<br />
 <div class="container">
-	<ul class="nav nav-tabs">
-		<li role="presentation" class="active"><a href="#">All</a></li>
-		<li role="presentation" ><a href="#">New</a></li>
-		<li role="presentation" ><a href="#">Featured</a></li>
-	</ul>
-	<br>
-	<br>
-	<div class="row">
-		<div class="col-md-3">
-			{% for p in product %}
-			{%with p.images_set.all|first as image%}
-			<div class="thumbnail" style="background-color: #ECECEC; border: none;">
-				<img src="{{image.url}}">
-			</div>
-			<div style="display: flex; align-items: center; width: 100%; padding-left: 25%; padding-right: 25%" >
-					<svg  style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
-  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="#FFDF00"/>
-					</svg>
-					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
-  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="#FFDF00"/>
-					</svg>
-					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
-  						<defs>
-    						<linearGradient id="linear-gradient" x1="0.027" y1="0.394" x2="0.986" y2="0.394" gradientUnits="objectBoundingBox">
-      							<stop offset="0" stop-color="#FFDF00"/>
-      							<stop offset="0.472" stop-color="#FFDF00"/>
-      							<stop offset="0.546" stop-color="#fff"/>
-      							<stop offset="1" stop-color="#fff"/>
-    						</linearGradient>
-  						</defs>
-  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="url(#linear-gradient)"/>
-					</svg>
-					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
-  						
-  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="none"/>
-					</svg>
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#">All</a></li>
+    <li role="presentation"><a href="#">New</a></li>
+    <li role="presentation"><a href="#">Featured</a></li>
+  </ul>
+  <br />
+  <br />
+  <div class="row">
+    <div class="col-md-3">
+      {% for p in product %} {%with p.images_set.all|first as image%}
+      <div class="thumbnail" style="background-color: #ececec; border: none">
+        <img src="{{image.url}}" />
+      </div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          width: 100%;
+          padding-left: 25%;
+          padding-right: 25%;
+        "
+      >
+        <svg
+          style="margin: 0.25em"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="32.446"
+          height="30.822"
+          viewBox="0 0 32.446 30.822"
+        >
+          <path
+            id="ic_grade_24px"
+            d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z"
+            transform="translate(-0.777 -0.719)"
+            stroke="#95989a"
+            stroke-width="1"
+            fill="#FFDF00"
+          />
+        </svg>
+        <svg
+          style="margin: 0.25em"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="32.446"
+          height="30.822"
+          viewBox="0 0 32.446 30.822"
+        >
+          <path
+            id="ic_grade_24px"
+            d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z"
+            transform="translate(-0.777 -0.719)"
+            stroke="#95989a"
+            stroke-width="1"
+            fill="#FFDF00"
+          />
+        </svg>
+        <svg
+          style="margin: 0.25em"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="32.446"
+          height="30.822"
+          viewBox="0 0 32.446 30.822"
+        >
+          <defs>
+            <linearGradient
+              id="linear-gradient"
+              x1="0.027"
+              y1="0.394"
+              x2="0.986"
+              y2="0.394"
+              gradientUnits="objectBoundingBox"
+            >
+              <stop offset="0" stop-color="#FFDF00" />
+              <stop offset="0.472" stop-color="#FFDF00" />
+              <stop offset="0.546" stop-color="#fff" />
+              <stop offset="1" stop-color="#fff" />
+            </linearGradient>
+          </defs>
+          <path
+            id="ic_grade_24px"
+            d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z"
+            transform="translate(-0.777 -0.719)"
+            stroke="#95989a"
+            stroke-width="1"
+            fill="url(#linear-gradient)"
+          />
+        </svg>
+        <svg
+          style="margin: 0.25em"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="32.446"
+          height="30.822"
+          viewBox="0 0 32.446 30.822"
+        >
+          <path
+            id="ic_grade_24px"
+            d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z"
+            transform="translate(-0.777 -0.719)"
+            stroke="#95989a"
+            stroke-width="1"
+            fill="none"
+          />
+        </svg>
 
-					<svg style="margin: 0.25em;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.446" height="30.822" viewBox="0 0 32.446 30.822">
-  						<path id="ic_grade_24px" d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z" transform="translate(-0.777 -0.719)" stroke="#95989a" stroke-width="1" fill="none"/>
-					</svg>
-					{% with fav|favp:p as fv%}
-					<svg onclick="favsubmit({{p.id}})" id="fav-anim-{{p.id}}" style="margin-left: 1.5em; margin-right: 1.5em;" xmlns="http://www.w3.org/2000/svg" width="30" height="27.525" viewBox="0 0 30 27.525">
-  						<path {% if fv %} class="fav" {%else%} class="fav-invert" {% endif %} id="fav-{{p.id}}" d="M17,30.525l-2.175-1.98C7.1,21.54,2,16.92,2,11.25A8.17,8.17,0,0,1,10.25,3,8.983,8.983,0,0,1,17,6.135,8.983,8.983,0,0,1,23.75,3,8.17,8.17,0,0,1,32,11.25c0,5.67-5.1,10.29-12.825,17.31Z" transform="translate(-2 -3)"
-  						/>
-					</svg>
-					{% endwith %}
-				</div>
-				<div style="width: 100%">
-					<a href="#"style="text-decoration: none;">
-						<h4  class="product">{{p.item_name}}</h4>
-					</a>
-					
-					<h5 style="text-align: center; font-family: bell-MT; color: #676767;"><!--<strike style="margin-right: 1em; color: #EB1818">299.99Br</strike>-->	{{p.Price}}Br</h5>
-				</div>
-				<span id="cart{{p.id}}" class="btn btn-default btns" style="text-align: center;width: 25%; margin-left: 20%; margin-right: 4%; font-family: bell-MT;" onclick="cartitem({{p.id}})">Cart</span>
-				<a href="{% url 'item' id=p.id %}" class="btn btn-default btns" style="text-align: center;width: 25%; margin-right: 20%; margin-left: 4%; font-family: bell-MT;">View</a>
-				{% endwith %}
-				{% endfor %}
-			
+        <svg
+          style="margin: 0.25em"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="32.446"
+          height="30.822"
+          viewBox="0 0 32.446 30.822"
+        >
+          <path
+            id="ic_grade_24px"
+            d="M17,24.905,26.27,30.5,23.81,19.955,32,12.86l-10.785-.915L17,2l-4.215,9.945L2,12.86l8.19,7.095L7.73,30.5Z"
+            transform="translate(-0.777 -0.719)"
+            stroke="#95989a"
+            stroke-width="1"
+            fill="none"
+          />
+        </svg>
+        {% with fav|favp:p as fv%}
+        <svg
+          onclick="favsubmit({{p.id}})"
+          id="fav-anim-{{p.id}}"
+          style="margin-left: 1.5em; margin-right: 1.5em"
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="27.525"
+          viewBox="0 0 30 27.525"
+        >
+          <path
+            {%if fv%}
+            class="fav"
+            {%else%}
+            class="fav-invert"
+            {%endif%}
+            id="fav-{{p.id}}"
+            d="M17,30.525l-2.175-1.98C7.1,21.54,2,16.92,2,11.25A8.17,8.17,0,0,1,10.25,3,8.983,8.983,0,0,1,17,6.135,8.983,8.983,0,0,1,23.75,3,8.17,8.17,0,0,1,32,11.25c0,5.67-5.1,10.29-12.825,17.31Z"
+            transform="translate(-2 -3)"
+          />
+        </svg>
+        {% endwith %}
+      </div>
+      <div style="width: 100%">
+        <a href="#" style="text-decoration: none">
+          <h4 class="product">{{p.item_name}}</h4>
+        </a>
 
-		</div>
-
-	</div>
+        <h5 style="text-align: center; font-family: bell-MT; color: #676767">
+          <!--<strike style="margin-right: 1em; color: #EB1818">299.99Br</strike>-->
+          {{p.Price}}Br
+        </h5>
+      </div>
+      <span
+        id="cart{{p.id}}"
+        class="btn btn-default btns"
+        style="
+          text-align: center;
+          width: 25%;
+          margin-left: 20%;
+          margin-right: 4%;
+          font-family: bell-MT;
+        "
+        onclick="cartitem({{p.id}})"
+        >Cart</span
+      >
+      <a
+        href="{% url 'item' id=p.id %}"
+        class="btn btn-default btns"
+        style="
+          text-align: center;
+          width: 25%;
+          margin-right: 20%;
+          margin-left: 4%;
+          font-family: bell-MT;
+        "
+        >View</a
+      >
+      {% endwith %} {% endfor %}
+    </div>
+  </div>
 </div>
-<br>
-<br>
+<br />
+<br />
 <div class="container">
-	<div class="jumbotron" style="display: flex; background-color: #FCBA66; position: relative; z-index: 0;">
-		<img src="{% static 'image/hencol.png' %}" class="img-responsive">
-		<h1 style="position: absolute; top: 20%; left: 20%; font-family: bell-MT; font-weight: bold;">Get Our<br>Latest Offer News</h1>
-		<h3 class="subscribenewsletter" >Subscribe For Newsletter</h3>
-		<div class="subscribe">
-			<div class="input-group input-group-lg" >
-			<input style="border-color: #707070; background-color: #FFFFFF; border-radius: 1em 0em 0em 1em;  font-family: bell-MT; font-size: 2em;" type="text" class="form-control" placeholder="Your Email"  aria-describedby="basic-addon">
-			<a href="#" class="input-group-addon" id="basic-addon" style="color: #FFFFFF; background-color: #FEAA3F; font-family: bell-MT; border: none; border-radius: 0em 1em 1em 0em; text-decoration: none;">Start Now</a>
-		</div>
-		</div>
-		
-	</div>
+  <div
+    class="jumbotron"
+    style="
+      display: flex;
+      background-color: #fcba66;
+      position: relative;
+      z-index: 0;
+    "
+  >
+    <img src="{% static 'image/hencol.png' %}" class="img-responsive" />
+    <h1
+      style="
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        font-family: bell-MT;
+        font-weight: bold;
+      "
+    >
+      Get Our<br />Latest Offer News
+    </h1>
+    <h3 class="subscribenewsletter">Subscribe For Newsletter</h3>
+    <div class="subscribe">
+      <div class="input-group input-group-lg">
+        <input
+          style="
+            border-color: #707070;
+            background-color: #ffffff;
+            border-radius: 1em 0em 0em 1em;
+            font-family: bell-MT;
+            font-size: 2em;
+          "
+          type="text"
+          class="form-control"
+          placeholder="Your Email"
+          aria-describedby="basic-addon"
+        />
+        <a
+          href="#"
+          class="input-group-addon"
+          id="basic-addon"
+          style="
+            color: #ffffff;
+            background-color: #feaa3f;
+            font-family: bell-MT;
+            border: none;
+            border-radius: 0em 1em 1em 0em;
+            text-decoration: none;
+          "
+          >Start Now</a
+        >
+      </div>
+    </div>
+  </div>
 </div>
-<br>
-<br>
-<br>
+<br />
+<br />
+<br />
 
 <script type="text/javascript">
-	function favsubmit(id){
-		y = document.getElementById("fav-anim-"+id);
-		x = $("#fav-"+id);
-		
-		
-		$.ajax({
-			url: "{% url 'index' %}",
-			data: {
-				'id': id,
-				'cart': false,
-			},
-			dataType: 'json',
-			success: function(data){
-				if(data.fav){
-					x.removeClass("fav");
-					x.addClass("fav-invert");
-				}
-				else {
-					x.removeClass("fav-invert");
-					x.addClass("fav");
-					var scale = 1.0;
-					var idi = setInterval(frame, 80);
-					var n=0;
-					function frame(){
-						if(scale<1){
-							scale+=0.1;
-							y.style.transform = "scale("+scale+")";
-							console.log(scale);
-							clearInterval(idi);
-						}
-						else{
-							if(scale>1.5 || n==1){
-								scale-=0.1;
-								y.style.transform = "scale("+scale+")";
-								n=1;
-								}
-							else{
-								scale+=0.1;
-								y.style.transform = "scale("+scale+")";
-							}
-							
-						}	
-					}
-				}
-			},
-			error: function() {
-				x = $("#fav-"+id);
-			}, 
-		})
-	}
-	function cartitem(value) {
-		// body...
-		$.ajax({
-			url : "{% url 'index' %}",
-			data : {
-				'id': value,
-				'cart': true,
-			},
-			dataType : 'json',
-			success : function(data){
-				console.log(data);
-				if(data.cart){
-					var a = $("#cart"+value);
-					a.css("background-color", "#D8D3C2");
-					a.css("cursor", "default");
-					a.val("Carted");
-					a.hover(function(){
+  function favsubmit(id) {
+    y = document.getElementById("fav-anim-" + id);
+    x = $("#fav-" + id);
 
-					});
-				}
-			},
-		})
-	}
+    $.ajax({
+      url: "{% url 'index' %}",
+      data: {
+        id: id,
+        cart: false,
+      },
+      dataType: "json",
+      success: function (data) {
+        if (data.fav) {
+          x.removeClass("fav");
+          x.addClass("fav-invert");
+        } else {
+          x.removeClass("fav-invert");
+          x.addClass("fav");
+          var scale = 1.0;
+          var idi = setInterval(frame, 80);
+          var n = 0;
+          function frame() {
+            if (scale < 1) {
+              scale += 0.1;
+              y.style.transform = "scale(" + scale + ")";
+              console.log(scale);
+              clearInterval(idi);
+            } else {
+              if (scale > 1.5 || n == 1) {
+                scale -= 0.1;
+                y.style.transform = "scale(" + scale + ")";
+                n = 1;
+              } else {
+                scale += 0.1;
+                y.style.transform = "scale(" + scale + ")";
+              }
+            }
+          }
+        }
+      },
+      error: function () {
+        x = $("#fav-" + id);
+      },
+    });
+  }
+  function cartitem(value) {
+    // body...
+    $.ajax({
+      url: "{% url 'index' %}",
+      data: {
+        id: value,
+        cart: true,
+      },
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+        if (data.cart) {
+          var a = $("#cart" + value);
+          a.css("background-color", "#D8D3C2");
+          a.css("cursor", "default");
+          a.val("Carted");
+          a.hover(function () {});
+        }
+      },
+    });
+  }
 </script>
-{% endblock %} 
+{% endblock %}

@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.urls import re_path
 from . import views
 
 urlpatterns = [
-	url(r'^signin/',views.login, name='signin'),
-	url(r'^',views.index, name='account'),
+	re_path(r'^signin/',views.login, name='signin'),
+	re_path(r'^',views.index, name='account'),
 	]

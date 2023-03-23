@@ -1,13 +1,13 @@
-from django.conf.urls import url
+from django.urls import re_path
 from . import views
 
 
 
 urlpatterns = [
-	url(r'^$',views.index, name='index'),
-	url(r'^products/$',views.home, name='home'),
-	url(r'^product/(?P<id>\d+)/$',views.item, name='item'),
-	url(r'^addproduct/$', views.addproduct, name='addproduct'),
+	re_path(r'^$',views.index, name='index'),
+	re_path(r'^products/$',views.home, name='home'),
+	re_path(r'^product/(?P<id>\d+)/$',views.item, name='item'),
+	re_path(r'^addproduct/$', views.addproduct, name='addproduct'),
 	
 	]
 

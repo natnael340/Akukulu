@@ -4,9 +4,12 @@ from product.models import Products, Images, ProductHolder
 from django.http import JsonResponse
 # Create your views here.
 
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
 def cart_view(request):
 	print(str(request.META['REMOTE_ADDR']))
-	if request.is_ajax():
+	if is_ajax(request):
 		p = Products.objects.get(id=request.GET['id'])
 		k = p.Price
 		print("price", k)
